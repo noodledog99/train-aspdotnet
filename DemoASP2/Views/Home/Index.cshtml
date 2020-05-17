@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    body {
+        margin: 0;
+        background-color: #f2f2f2;
+        overflow: hidden;
+    }
+    .about {
+        background-color: #6233FF;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inner-about {
+        width: 100%;
+        max-width: 600pt;
+        padding: 10pt;
+    }
+
+        .inner-about h1 {
+            margin: 0;
+            font-size: 35pt;
+            margin-bottom: -10pt;
+        }
+
+        .inner-about p {
+            margin: 0;
+            margin-bottom: 8pt;
+            font-size: 15pt;
+        }
+
+    .social {
+        margin-bottom: 0pt;
+    }
+
+        .social a {
+            margin-right: 5pt;
+        }
+
+            .social a:link, .social a:visited {
+                color: #fff;
+                text-decoration: none;
+            }
+</style>
+<div class="about">
+    <div class="inner-about">
+        <h1>Welcom To Home Page!</h1><br>
+        <p>I'm a developer that writes code, creates bugs and sometimes tries to build a landing page.</p>
+        <p class="social">
+            <a href="https://github.com">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://twitter.com">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://medium.com">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </p>
+    </div>
+</div>

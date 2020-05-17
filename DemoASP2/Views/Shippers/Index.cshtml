@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DemoASP2.Models.Shipper>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phon)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phon)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ShipperId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ShipperId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ShipperId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

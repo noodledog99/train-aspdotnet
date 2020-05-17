@@ -1,0 +1,201 @@
+﻿@model DemoASP2.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Order Details</h2>
+    <div>
+        <div class="card">
+            <div class="card-head">
+                <h4>Order #@Model.OrderId</h4>
+            </div>
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.customer.CompanyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.customer.CompanyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.employee.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.employee.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.shipper.CompanyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.shipper.CompanyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OrderDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RequiredDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RequiredDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShippedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShippedDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipVia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipVia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Freight)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Freight)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipAddress)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipAddress)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipCity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipCity)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipRegion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipRegion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipPostalCode)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipPostalCode)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShipCountry)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ShipCountry)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-head">
+            <h4>Product</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DropDownList("ProductId", (SelectList)ViewBag.Products, htmlAttributes: new { @class = "form-control" })</td>
+                            <td><label id="lblPrice" /></td>
+                            <td><input type="number" class="form-control" id="txtQuantity" /></td>
+                            <td><button class="btn btn-default" id="btnAdd" type="submit">Add</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Partial View</h4>
+            @{Html.RenderPartial("ViewOrderDetail", Model); }
+
+            <h4>Ajax View</h4>
+            <div id="tbOrderDetail"></div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        updateTableOrderDetail();
+
+        $('#btnAdd').click(() => {
+            addOrderDetail();
+        })
+
+        function addOrderDetail() {
+            const url = '@Url.Action("AddOrderDetail","Orders", new { id = Model.OrderId})';
+            let data = {
+                productId: $('#ProductId').val(),
+                Quantity: $('#txtQuantity').val()
+            }
+
+            $.post(url, data).then((res) => {
+                updateTableOrderDetail();
+                $('#txtQuantity').val("");
+            })
+        }
+
+        function updateTableOrderDetail() {
+            const url = '@Url.Action("ViewOrderDetail","Orders", new { id = Model.OrderId})';
+            $.get(url).then((res) => {
+                console.log(res)
+                $("#tbOrderDetail").html(res);
+            })
+        }
+    </script>
+}
+

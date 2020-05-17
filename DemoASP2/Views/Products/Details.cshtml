@@ -1,0 +1,79 @@
+﻿@model DemoASP2.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Product Detail</h2>
+    <div class="card">
+        <div class="card-head">
+            <h4>Product #@Model.ProductId</h4>
+        </div>
+        <div class="card-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.category.CategoryName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.category.CategoryName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.supplier.CompanyName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.supplier.CompanyName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuantityPerUnit)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.QuantityPerUnit)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UnitPrice)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitsInStock)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UnitsInStock)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitsOnOrder)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UnitsOnOrder)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReOrderLevel)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ReOrderLevel)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Discontinued)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Discontinued)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>

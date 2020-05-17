@@ -1,0 +1,86 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Quicksand", sans-serif !important;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-default {
+    background-color: white !important;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(34, 34, 34, 0.075) !important;
+    transition: all 500ms ease-out !important;
+    color: black;
+}
+.navbar {
+    margin-bottom:0;
+}
+
+ul.main-nav {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 15px;
+}
+
+    ul.main-nav li a {
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+        ul.main-nav li a:hover {
+            color: #6233FF;
+            background-color: white;
+        }
+
+/*my css*/
+.card-head {
+    background-color: #dddddd;
+    padding: 1px 15px;
+}
+
+.card-body {
+    padding: 30px 20px;
+}
+
+section.title {
+    margin-bottom: 25px;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    ul.main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    ul.main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
